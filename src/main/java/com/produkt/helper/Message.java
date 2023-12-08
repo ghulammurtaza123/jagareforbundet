@@ -1,8 +1,6 @@
 
 package com.produkt.helper;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 
 
 public class Message {

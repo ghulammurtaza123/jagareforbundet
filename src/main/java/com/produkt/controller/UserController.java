@@ -263,7 +263,7 @@ public class UserController {
 			
 			List<UserKrets> existingUserKrets = userkrets_repo.findKretsByUserId(user.getId());
 		    for (UserKrets existingUserKret : existingUserKrets) {
-		        if (!selectedKrets.contains(existingUserKret.getKrets().getKretName())) {
+		        if (selectedKrets != null && !selectedKrets.contains(existingUserKret.getKrets().getKretName())) {
 		            userkrets_repo.delete(existingUserKret);
 		        }
 		    }
