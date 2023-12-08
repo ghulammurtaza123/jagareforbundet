@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{admin/base::layout(~{::section})}">
+
+<head>
+	<meta charset="UTF-8">
+	<title th:text="${title}">Evenemangs</title>
+</head>
+
+<body>
+        <section>
+
+            <div class="card mr-3 ml-3">
+
+                <div class="card-body">
+
+                    <h1 class="text-center">Event </h1>
+<div class="search-news my-4 ms-auto">
+
+				<input type="text" id="search" class="form-control" placeholder="Sök Event" onkeyup="searchEvent()">
+
+				<div class="search-result">
+
+				</div>
+			</div>
+                    
+
+                    <div class="table-responsive">
+                        <table class="table table-hover" >
+                            <thead>
+                                <tr>
+                                    <th scope="col">Event</th>
+                                    <th scope="col">Datum-Tid</th>
+                                    <th scope="col">Plats</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="event,c : ${event}">
+                                   <!-- <th scope="row" th:text="'Event# ' + ${c.count}"></th>-->
+                                    
+                                    <td >
+                                      <a th:href="@{${event.weblink}}" th:target="_blank">
+                                            <span th:text="${event.rubrik}"></span></a>
+                                    </td>
+                                    <td th:text="${event.datepicker}"></td>
+                                    <td th:text="${event.plats}"></td>
+                                    <td class="flex align-items-center">
+
+
+                                        <a href="#" th:href="@{'/admin/update-event/'+${event.eId}}"><i class="fas fa-user-edit" style="color:blue" data-toggle="update" title="Update"></i></a>
+
+
+
+                                        <a href="#" th:onclick="|deleteEvent(${event.eId})|"><i class="fa fa-trash" style="color:red" data-toggle="delete" title="Delete"></i></a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+         
+
+
+                </div> 
+
+            </div>
+     <script>
+                $(document).ready(() =>{
+                    
+                     $('.item').removeClass('active');
+                      $("#show-event").addClass('active');
+                })
+               
+            </script>
+
+
+        </section>
+
+    </body>
+
+</html>

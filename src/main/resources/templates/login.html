@@ -1,0 +1,54 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeLeaf.org" th:replace="~{base::layout(~{::section})}">
+    <head>
+      <meta charset="ISO-8859-1">
+        <title th:text="${title}"></title>
+        
+
+    </head>
+    <body >
+        
+        	<section class="logins">
+        <div id="login">
+
+            <div class="container login-container">
+            
+             <div class="row">
+				
+        <div class="col-md-6 ads">
+			
+          <h1><span id="fl">Jägareförbundet</span><span id="sl">Stockholm</span></h1>
+        </div>
+        <div class="col-md-6 login-form">
+          <div class="profile-img">
+            <img src="../img/logo.png" alt="profile_img" height="90px" width="90px;">
+          </div>
+          <h3>Logga in</h3>
+          <div  th:if="${param.error}" class="alert alert-danger">Ogiltigt användarnamn eller lösenord !! !! </div>
+                                <div  th:if="${param.logout}" class="alert alert-success"> Utloggningen lyckades !!</div>
+                                <div  th:if="${param.change}" class="alert alert-info"><p th:text="${param.change}"></p></div>
+          <form id="login-form" class="form" th:action="@{/dologin}" action="#" method="post" >
+            <div class="form-group">
+              <input type="text" class="form-control" name="username" id="username" placeholder="Användarnamn" required>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" id="password" name="password" placeholder="Lösenord" required>
+            </div>
+            <div class="form-group">
+                                    <label for="remember-me" ><span>Kom ihåg mig</span> &nbsp<span><input id="remember-me" name="remember-me" type="checkbox"></span>
+                                        </label><br><br>
+            <div class="form-group my-1 text-center">
+              <input type="submit" name="submit" class="btn btn-info" value="Logga in">
+              <button id="register" type="button" class="btn btn-info btn-md"><a th:href="@{/register}">Anmäl dig här</a></button>
+            </div>
+            <div class="form-group forget-password text-center">
+                <a th:href="@{/forgot_password}">Glömt lösenordet ?</a>
+            </div>
+          </form>
+        </div>
+      </div>
+        </div>
+         </div>
+        	</section>
+    </body>
+</html>

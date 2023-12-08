@@ -1,0 +1,410 @@
+* {
+	box-sizing: border-box;
+}
+
+
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	grid-template-areas:
+		'left left left  right right right'
+		'centre-left centre-left centre-left centre-right centre-right centre-right'
+		'footer footer footer footer footer footer';
+	grid-column-gap: 10px;
+	margin: 10px;
+
+}
+
+.grid-user-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	grid-template-areas:
+		'message message message message message message'
+		'main main main main centre-right centre-right'
+		'centre-left centre-left centre-left centre-left centre-right centre-right'
+		'footer footer footer footer footer footer';
+	grid-column-gap: 5px;
+	margin: 5px;
+
+}
+
+
+.message {
+	height: 100%;
+	border: 10px solid #f1f1f1;
+	width: 100%;
+	margin-top: 5px;
+
+}
+
+.main {
+	height: 100%;
+	border: 10px solid #f1f1f1;
+	width: 100%;
+	margin-top: 10px;
+
+}
+
+.sidmain {
+	height: 100%;
+	border: 10px solid #f1f1f1;
+	width: 100%;
+
+	margin-top: 10px;
+	overflow: hidden;
+
+}
+
+.grid-scroll-wrapper {
+	overflow-x: scroll;
+}
+
+.left,
+.right {
+
+	height: 500px;
+	border: 10px solid #f1f1f1;
+	width: 100%;
+	margin-top: 10px;
+}
+
+.cleft {
+
+	border: 10px solid #f1f1f1;
+	margin-top: 10px;
+	background-color: white;
+	overflow: hidden;
+
+}
+
+.cright {
+
+	border: 10px solid #f1f1f1;
+	margin-top: 10px;
+	background-color: white;
+	overflow: hidden;
+	height: 100%
+}
+
+
+
+/* Style the message  */
+.message {
+	grid-area: message;
+}
+
+/* Style the main  */
+.main {
+	grid-area: main;
+}
+
+/* Style the sidemain  */
+.sidmain {
+	grid-area: sidmain;
+}
+
+/* Style the left column */
+.left {
+	grid-area: left;
+}
+
+/* Style the right column */
+.right {
+	grid-area: right;
+}
+
+.cleft {
+	grid-area: centre-left;
+}
+
+.cright {
+	grid-area: centre-right;
+}
+
+/* Style the footer */
+.footer {
+	grid-area: footer;
+	background-color: #f1f1f1;
+	padding: 10px;
+	text-align: center;
+	margin-top: 10px;
+
+}
+
+.news-flex {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	margin-left: 10%;
+	column-gap: 2%;
+
+
+}
+
+#news-card-flexs {
+
+
+	
+	width: 30% !important;
+	
+	padding-bottom: 15% !important;
+	
+
+
+
+
+
+}
+
+#event-date {
+	padding-right: 0px;
+	width: 5px;
+}
+
+#event-place {
+
+	width: 100%;
+	margin-left: 40px !important;
+}
+
+.text-banner {
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	/* Optional border style */
+}
+
+.marquee {
+	display: inline-block;
+	animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+	0% {
+		transform: translateX(100%);
+	}
+
+	100% {
+		transform: translateX(-100%);
+	}
+}
+
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+	.grid-container {
+		grid-template-areas:
+
+			'left left left left left left'
+			'right right right right right right'
+			'centre-left centre-left centre-left centre-left centre-left centre-left'
+			'centre-right centre-right centre-right centre-right centre-right centre-right'
+			'footer footer footer footer footer footer';
+	}
+
+	.grid-user-container {
+		grid-template-areas:
+            'message message message message message message'
+			'main  main main main main main'
+			'centre-left centre-left centre-left centre-left centre-left centre-left'
+			'centre-right centre-right centre-right centre-right centre-right centre-right'
+			'centre-right centre-right centre-right centre-right centre-right centre-right'
+			'footer footer footer footer footer footer';
+	}
+
+
+	.cleft {
+		padding: 0px;
+		height: 100%;
+
+
+		overflow-y: hidden;
+
+	}
+
+	.cright {
+		padding: 0px;
+		height: 100%;
+
+
+		overflow-y: hidden;
+
+	}
+
+
+
+
+	#frame {
+		width: 100%;
+		height:100%;
+	}
+
+
+
+	#filterSelect {
+		background-color: #f7941d !important;
+		color: #55616b !important;
+		font-weight: bold !important;
+
+	}
+
+	#eventFilterSelect {
+		background-color: #f7941d !important;
+		color: #55616b !important;
+		font-weight: bold !important;
+
+	}
+
+	#news-card-flexs {
+
+		width: 100% !important;
+		padding-right: 3%;
+		padding: 0px,0px,3px,0px!important;
+		margin-top:0px !important; 
+
+	}
+
+	#event-date {
+		padding-right: 0px;
+
+		margin-left: 0px !important;
+		padding-left: 0px;
+	}
+
+	#event-place {
+
+		width: 300px;
+		height: 100%;
+		margin-left: 30px !important;
+		padding: 0px;
+
+	}
+
+
+
+
+
+}
+
+
+
+
+
+.bg-nav {
+	background: #333333;
+}
+
+
+
+
+.banner {
+	width: 100%;
+}
+
+#newsCarousel .carousel-item img {
+	object-fit: cover;
+	object-position: center;
+	height: 481px;
+	overflow: hidden;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+	display: none;
+}
+
+#rightCaption {
+	position: absolute;
+	top: 0%;
+	transform: translateX(55%);
+
+}
+
+#leftCaption {
+	position: absolute;
+	top: 0%;
+	transform: translateX(-18%);
+
+}
+
+#downCaption {
+	position: absolute;
+	top: 35%;
+	transform: translateX(65%);
+
+}
+
+.images {
+	max-width: 75px;
+	border-radius: 25%;
+}
+
+.admin .card {
+	border: 1px solid red;
+	width: 95% !important;
+	height: 95% !important;
+	max-width: auto !important;
+	max-height: auto !important;
+}
+
+.admin .card:hover {
+	background: #e2e2e2;
+	cursor: pointer;
+
+}
+
+.star-dalig::before {
+	content: 'Dålig';
+}
+
+.star-medel::before {
+	content: 'Medel';
+}
+
+.star-bra::before {
+	content: 'Bra';
+}
+
+.star-mycket-bra::before {
+	content: 'Mycket bra';
+}
+
+.star-utmärkt::before {
+	content: 'Utmärkt';
+}
+
+@font-face {
+	font-family: 'dinot-black';
+	src: url('fonts/DINOT-Black.eot');
+	src: url('fonts/DINOT-Black.eot?#iefix') format('embedded-opentype'),
+		url('fonts/DINOT-Black.woff') format('woff'),
+		url('fonts/DINOT-Black.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+@font-face {
+	font-family: 'dinot-medium';
+	src: url('fonts/DINOT-Medium.eot');
+	src: url('fonts/DINOT-Medium.eot?#iefix') format('embedded-opentype'),
+		url('fonts/DINOT-Medium.woff') format('woff'),
+		url('fonts/DINOT-Medium.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+@font-face {
+	font-family: 'dinot-light';
+	src: url('fonts/DINOT-Light.eot');
+	src: url('fonts/DINOT-Light.eot?#iefix') format('embedded-opentype'),
+		url('fonts/DINOT-Light.woff') format('woff'),
+		url('fonts/DINOT-Light.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}

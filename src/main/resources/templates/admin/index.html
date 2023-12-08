@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org" th:replace="~{admin/base::layout(~{::section})}">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Admin</title>
+</head>
+
+<body>
+	<section>
+
+
+
+		<div class="container admin">
+
+			<div class="row mt-4">
+
+				<div class="col-md-4">
+					<div class="card" >
+						<div class="card-body text-center" >
+							<div class="container " >
+								<img class="images image-fluid" th:src="@{/img/team.png}" alt="Anändare image" style="max-width: 55%; max-height: auto; width:350; height:50%" />
+							</div>
+							<h2 th:text="${number_of_users}" style="color: blue;"></h2>
+							<h2 class="text-uppercase text-muted">Användare</h2>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-body text-center">
+							<div class="container">
+								<!--<img class="images image-fluid" th:src="@{/img/best-customer-experience.png}"
+									alt="Anändare image" />-->
+								<canvas id="chartjs-pie" style="max-width: 100%; max-height: auto; width:450; height:50%"></canvas>
+							</div>
+							<h2 class="text-uppercase text-muted">Nyheter Bedömning</h2>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card" id="meddelande" onclick="addMeddelande()">
+						<div class="card-body text-center">
+							<div class="container">
+								<img class="images image-fluid" th:src="@{/img/satisfied.png}" alt="Användare image" />
+							</div>
+							<br>
+							<p>Klicka här för att lägga till meddelande</p>
+							<h2 class="text-uppercase text-muted">Lägg Meddelande</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row mt-3">
+
+				<div class="col-md-6">
+					<div class="card" id="news" onclick="addNews()">
+						<div class="card-body text-center">
+							<div class="container">
+								<img class="images image-fluid" th:src="@{/img/megaphone.png}" alt="Anändare image" />
+							</div>
+							<p>Klicka här för att lägga till lokala nyheter</p>
+							<h2 class="text-uppercase text-muted">Lägg Nyheter</h2>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-md-6">
+					<div class="card" id="event" onclick="addEvent()">
+						<div class="card-body text-center">
+							<div class="container">
+								<img class="images image-fluid" th:src="@{/img/event.png}" alt="Anändare image" />
+							</div>
+							<p>Klicka här för att lägga till event information</p>
+							<h2 class="text-uppercase text-muted">Lägg Event</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script th:inline="javascript">
+			`/*<![CDATA[*/`
+			new Chart(document.getElementById("chartjs-pie"), {
+				type: "pie",
+				data: {
+					labels: ["Utmärkt", "Mycket bra", "Intressant", "Medel", "Dålig"],
+					datasets: [{
+						data: [`[[${rating_5}]]`, `[[${rating_4}]]`, `[[${rating_3}]]`, `[[${rating_2}]]`, `[[${rating_1}]]`],
+						backgroundColor: [
+							'rgba(2, 148, 32, 1)',
+							'rgba(0, 0, 255, 1)',
+							'rgba(255, 0, 0, 1)',
+							'rgba(255, 140, 0, 1)',
+							'rgba(0, 128, 128, 1)',
+						],
+						borderColor: "#ffffff",
+						borderWidth: 0,
+
+					}]
+				},
+				options: {
+					maintainAspectRatio: true,
+					cutoutPercentage: 0,
+					legend: {
+						position: 'right',
+						labels: {
+							fontSize: 10, // Set the font size for the legend labels
+
+						}
+
+					},
+
+				}
+			});
+
+			`/*]]>*/`
+
+		</script>
+
+	</section>
+
+</body>
+
+</html>

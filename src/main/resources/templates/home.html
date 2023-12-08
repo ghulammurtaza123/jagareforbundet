@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org" th:replace="~{base::layout(~{::section})}">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/src/home-style.css">
+
+<title>Home</title>
+
+</head>
+<body>
+	<section class="banner flex">
+		 		<div class="grid-scroll-wrapper">
+	<div class="grid-container">
+  
+  <div id="carouselExampleCaptions" class="carousel carousel-dark slide left" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div id= "newsCarousel" class="carousel-inner">
+    <div class="carousel-item active">
+      <img th:src="@{/img/medlem-brev.jpg}" class="d-block w-100" alt="...">
+   
+    <div id="rightCaption" class="carousel-caption d-md-block ">
+		 <div style="background-color:black; width: 55%;" >
+        <h2><a href="https://jagareforbundet.se/mitt/stockholms-lan/jagareforbundet-stockholm/nyheter-stockholm/2023/10/senaste-medlemsbrevet/" target="">Senaste medlemsbrevet</a></h2>
+        <p style="color: white;"><span class="category"><span>Stockholms län </span></span> <span class="dateinpuff">2023-10-27</span> Om älgar, nästa stora jaktmässa, kalender och jakter på våra jaktgårdar,<br/> samt att det nu är dags att kontakta valberedningen i din krets och funder...</p>
+		<div class="clearfix"></div>
+		</div>
+      </div>
+      <div class="rw-ui-container"></div>
+    </div>
+      
+    <div class="image carousel-item">
+      <img src="https://img2.anpdm.com/81598/dag-liden.jpg" class="d-md-block w-100" style="min-height: 45%;" alt="...">
+      <div id="leftCaption"  class="carousel-caption d-md-block">
+		 
+		  <div style="background-color:black; width: 55%; color: white;" >
+        <h2 style="color: white;">Dag Lidén slutar som generalsekreterare</h2>
+        <p style="margin: 0px;">Efter 1,5 år som generalsekreterare i Svenska Jägareförbundet har Dag Lidén valt att säga upp sin tjänst av privata och personliga skäl, bl.a. en hjärtinfarkt hösten 2022. Han slutar med omedelbar verkan.</p>
+        <h3><a style="color: gold; "href="https://jagareforbundet.se/aktuellt/forbundsnyheter/2023/10/dag-liden-slutar-pa-jagareforbundet/" target="">Förbundsnyheter</a></h3>
+      </div>
+      <div class="rw-ui-container"></div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://img2.anpdm.com/81598/bild_1_massa.jpg" class="d-md-block w-100" style="min-height: 45%;" alt="...">
+      <div id="downCaption" class="carousel-caption d-md-block">
+        <div style="background-color:black; width: 55%; color: white;">  
+        <h2 style="color: white;">Nyhet idag! <br/>
+Swedish Game Fair – Wenngarns Slott </h2>
+        <p style="margin: 0px;">Vi ses på mässan 31 maj – 2 juni!<br/> Ny plats är Wenngarns Slott strax norr om Sigtuna. Jägareförbundet är naturligtvis där.</p>
+        <h3><a style="color: gold; "href="https://swedishgamefair.se/" target="">Swedish Game Fair</a></h3>
+      
+      </div>
+       </div>
+    </div>
+  </div>
+  <a role="button" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+   <a role="button" class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next" >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+ </a>
+</div>
+  <div class="right"><iframe src="https://www.anpdm.com/newsletterweb/48415A4470484A514376404359/43455D477748415143754141594371" width="100%" height="100%"></iframe></div>
+  <div class="cleft" >
+	<div class="fp-aktiviteter">
+			<h3 class=" tck-module-title">Aktiviteter</h3>
+	
+	<div class="ebm-upcoming-events ebm-upcoming-events-improved">
+                    <div class="row up-event-item">
+                <div class="col-md-3">
+                    <div class="ebm-event-date">
+                                                        <div class="ebm-event-month">nov</div>
+                                <div class="ebm-event-day">10</div>
+                                                </div>
+                </div>
+                <div class="col-md-9">
+                                                <a class="url ebm-event-link" href="https://jagareforbundet.se/mitt/stockholms-lan/jagareforbundet-stockholm/Kalender/2023/11/utbildningsjakt-vildsvin22/">Utbildningsjakt vildsvin</a>
+		                       
+                                                 <div>07:30, Forsmark</div>
+                            
+                                        </div>
+            </div>
+                    <div class="row up-event-item">
+                <div class="col-md-3">
+                    <div class="ebm-event-date">
+                                                        <div class="ebm-event-month">nov</div>
+                                <div class="ebm-event-day">15</div>
+                                                </div>
+                </div>
+                <div class="col-md-9">
+                                                <a class="url ebm-event-link" href="https://jagareforbundet.se/mitt/stockholms-lan/jagareforbundet-stockholm/Kalender/2023/11/utbildning---viltundersokare/">Utbildning - Viltundersökare</a>
+					<div>09:00, Tierp</div>
+                                        </div>
+            </div>
+                    <div class="row up-event-item">
+                <div class="col-md-3">
+                    <div class="ebm-event-date">
+                                                        <div class="ebm-event-month">nov</div>
+                                <div class="ebm-event-day">22</div>
+                                                </div>
+                </div>
+                <div class="col-md-9">
+                                                <a class="url ebm-event-link" href="https://jagareforbundet.se/mitt/stockholms-lan/jagareforbundet-stockholm/Kalender/2023/11/styckkurs/">Styckkurs - Söderort jvk</a>
+					<div>18:30, Nacka</div>
+					</div>
+            </div>
+             <div class="row up-event-item">
+                <div class="col-md-3">
+                    <div class="ebm-event-date">
+                                                        <div class="ebm-event-month">nov</div>
+                                <div class="ebm-event-day">24</div>
+                                                </div>
+                </div>
+                <div class="col-md-9">
+                                                <a class="url ebm-event-link" href="https://jagareforbundet.se/mitt/stockholms-lan/jagareforbundet-stockholm/Kalender/2023/11/utbildningsjakt-vildsvin11/">Utbildningsjakt vildsvin</a>
+					<div>07:30, Forsmark</div>
+					</div>
+            </div>
+            <a href="https://jagareforbundet.se/mitt/stockholms-lan/jagareforbundet-stockholm/Kalender/" class="bottomLink">Se alla aktiviteter</a>
+            </div>
+  </div>   
+</div>
+  <div class="cright">
+	  <div class="buySellAds">
+	<div class="borderHeading">
+		<h2><span>Landet Runt - Mitt</span></h2>
+	</div>
+	<ul>
+		
+				<li class="eventtext">
+					<a href="https://jagareforbundet.se/aktuellt/landet-runt/landet-runt---mitt/2023/10/fagelhundsrasernas-egen-dag/" title="Fågelhundsrasernas egen dag"><h2>Fågelhundsrasernas egen dag</h2>
+					<div class="col1" style="float:right; margin-left:30px;">
+				<a href="https://jagareforbundet.se/aktuellt/landet-runt/landet-runt---mitt/2023/10/fagelhundsrasernas-egen-dag/">
+				<img alt="" src="/img/fagelhund2-foto_linus_olsson.png?maxwidth=100&amp;maxheight=70" style="padding:3px 0;" /></a>            
+			</div><h3>GOTLAND Setter, pointer, vorsteh… för den som är<br> intresserad av fågeljakt finns det många...</h3></a>  
+					<b><strong>Datum:</strong> 2023-10-25 13:41</b>
+					<br>
+					<br>
+				</li>
+			
+				<li class="eventtext">
+					<a href="https://jagareforbundet.se/aktuellt/landet-runt/landet-runt---mitt/2023/10/varvarjakten--med-fokus-pa-medlemsnytta/" title="Värvarjakten – med fokus på medlemsnytta"><h2>Värvarjakten – med fokus på medlemsnytta</h2>
+					<div class="col1" style="float:right; margin-left:30px;">
+				<a href="https://jagareforbundet.se/aktuellt/landet-runt/landet-runt---mitt/2023/10/varvarjakten--med-fokus-pa-medlemsnytta/">
+				<img alt="" src="/img/img_1607.jpeg?maxwidth=100&amp;maxheight=70" style="padding:3px 0;" /></a>            
+			</div><h3>Engagerade värvare bjöds in till klövviltsjakt på<br> Öster Malma. Varje år lottas det ut tio platser...</h3></a>  
+					<b><strong>Datum:</strong> 2023-10-18 10:20</b>
+						
+				</li>
+		
+	</ul>
+	
+	<a href="https://jagareforbundet.se/aktuellt/landet-runt/landet-runt---mitt/" class="bottomLink">Fler nyheter</a>
+</div></div>
+  <div class="footer">
+	<div id="wrapper-footer" class="text-banner">
+					<h1 class="marquee" style="font-size: 45px; font-weight: bold; color:white">Lägg till banner här
+					</h1>
+					<!--	<div class="inner  tck-container">
+
+						<section id="row-footer" class="tck-modules">
+							<div class="inner n4">
+								<div id="footer-left" class="flexiblemodule ">
+									<div class="inner " data-position="footer-left">
+										<div class="footer-left  tck-module">
+											<div class="tck-module-text">
+
+												<div id="mod-custom132" class="mod-custom custom">
+													START: Articles Anywhere
+													<h3>J&auml;garef&ouml;rbundet Stockholm</h3>
+
+													<p><a href="/personuppgiftspolicy">Personuppgiftspolicy</a></p>
+													END: Articles Anywhere
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div id="footer-center-left" class="flexiblemodule ">
+									<div class="inner " data-position="footer-center-left">
+										<div class="footer-center-left  tck-module">
+											<div class="tck-module-text">
+
+												<div id="mod-custom131" class="mod-custom custom">
+													START: Articles Anywhere
+													<h3>Kontaktuppgifter</h3>
+													<p>Kontakta J&auml;garef&ouml;rbundet Stockholm</p>
+													<p>Styrelsen<br><a href="/styrelsen">Se alla kontaktuppgifter
+															till
+															styrelsen &gt;&gt;</a></p>
+													<p>Kansliet<br>Bes&ouml;ksadress: Lingen&auml;sv&auml;gen
+														21<br>Postadress: 29135 Stockholm<br>Tel: 077-1830 300</p>
+													<p style="margin:0px; padding:0px"><a href="/kansliet">Kansliet</a>
+													</p>
+													<p><a href="/styrelsen/valberedning">Valberedning</a></p>
+													END: Articles Anywhere
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div id="footer-center-right" class="flexiblemodule ">
+									<div class="inner " data-position="footer-center-right">
+										<div class="footer-center-right  tck-module">
+											<div class="tck-module-text">
+
+												<div id="mod-custom130" class="mod-custom custom">
+													START: Articles Anywhere
+													<h3>Medlemmar</h3>
+													<p><a href="https://jagareforbundet.se/medlem/medlemsservice/"
+															target="_blank" rel="noopener">Medlemsservice</a></p>
+													<p><a href="/jaktvardskretsar">Hitta din
+															jaktv&aring;rdskrets</a>
+													</p>
+													<p>Har du n&aring;got som du vill bidra med?&nbsp;<br><a
+															href="/nyheter/alla-nyheter/#bidra">Skicka g&auml;rna
+															ditt
+															tips
+															till oss &gt;&gt;</a></p>
+													<p>Du kan bidra med till exempel</p>
+													<ul>
+														<li>H&auml;ndelser inom l&auml;net</li>
+														<li>Nyheter som inte har uppm&auml;rksammats</li>
+													</ul>
+													<p>Du kan inte bidra med till eempel</p>
+													<ul>
+														<li>Produkter</li>
+														<li>Reklam</li>
+													</ul>
+													<p>Vill du g&ouml;ra reklam p&aring; hemsidan, v&auml;nligen
+														kontakta <a href="/styrelsen#LarsPersson">Lars Persson</a>
+													</p>
+													END: Articles Anywhere
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div id="footer-right" class="flexiblemodule ">
+									<div class="inner " data-position="footer-right">
+										<div class="footer-right  tck-module">
+											<div class="tck-module-text">
+
+												<div id="mod-custom129" class="mod-custom custom">
+													START: Articles Anywhere
+													<h3>Inloggning J&auml;garef&ouml;rbundet</h3>
+													<div class="wf-columns wf-columns-stack-medium wf-columns-layout-auto"
+														data-wf-columns="1">
+														<div class="wf-columns">
+
+															<a href="https://medlem.jagareforbundet.se/blimedlem"
+																target="_blank" rel="noopener"> <button
+																	class="jfs-or-button">Bli medlem</button> </a>
+
+
+
+															<a href="https://login.jagareforbundet.se/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3DMedlem%26redirect_uri%3Dhttps%253A%252F%252Fmedlem.jagareforbundet.se%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520email%2520roles%26code_challenge%3DiDTSJA41AWIjcD6aWz3cIO1i_JCAYq_5AFl3k4bl1mY%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D637966012910137038.MmQ4ZGUzZTItMDQ3NC00MTYyLTlhZTYtYTg4ZmRmODAwY2UxOGEzZTY4ZDAtMjg2Yi00YWUzLTk2NDQtOWY2NTkxMzgyZjdm%26state%3DCfDJ8ATylmaxewlBvq9dnZEFLBJN2_j_-Dd5WZTS1JF9EkZssiAiWle31YTQtFSGzH5UUB1_jtu-7zd8sNeGulSdzxzenEje9EozqXy99VAznPZLsP4prpE20Nu9AIpd3JYVYhBrz0DK_yH2-o0ovqfTwX9uaNGcb8rLKl8h2CTvLxKvcTKgD45EZCUTY7dw2FA_InDy8EP3XvvqadE5yY_XGQUr-w_g-9amqXQM61EP0etrqkox0AedNbzEooFFhwMqvdgI60XkW9pgZ_pPeig74znxuJIWDMiH870CjaT9QWvpvdyWeFqXtjPVyr4rlLbup_v5cpzrfDR9yQmfeDyAT88iBHFwIV5VajMApctjLidnCKMjBL-p25MgWnMAotzsUA%26x-client-SKU%3DID_NETSTANDARD2_0%26x-client-ver%3D5.5.0.0"
+																target="_blank" rel="noopener"> <button
+																	class="jfs-wh-button">Logga in</button> </a>
+
+														</div>
+													</div>
+													<p>&nbsp;</p>
+													<p>F&ouml;r att kunna logga in p&aring; mina sidor p&aring;
+														J&auml;garef&ouml;rbundet beh&ouml;ver din medlemsavgift
+														vara
+														betald
+														och du m&aring;ste registrera dig f&ouml;r inloggning.&nbsp;
+													</p>
+													<p style="margin:0px"><a href="https://jagareforbundet.se/"
+															target="_blank" rel="noopener">Bes&ouml;k Svenska
+															J&auml;garef&ouml;rbundet</a></p>
+													<p style="text-align: center;"><a href="/jfs-admin"><img
+																src="../img/jf-logo-sym-wh.png"
+																alt="jfskane logo sym wh" width="40" height="46"
+																style="margin: 10px;"></a></p>
+													END: Articles Anywhere </p>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+
+
+						</section>
+
+
+					</div>-->
+				</div>
+  </div>
+   </div>
+</div>
+	</section>
+
+ 
+</body>
+</html>

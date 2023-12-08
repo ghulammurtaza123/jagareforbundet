@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{user/base::layout(~{::section})}">
+    <head>
+        <meta charset="UTF-8">
+        <title th:text="${title}" >Document</title>
+    </head>
+    <body>
+        <section>
+			<div class = "container">
+            <div class="card mr-3 ml-3" th:if="${newsDetails}">
+
+                <div class="card-body" >
+
+                    <div class="row text-center">
+
+                        <div class="col-md-6 offset-md-3 text-center" th:if="${newsDetails.imageUrl != 'blank.png'}">
+                        <img class="profile-images img-fluid d-block text-center" src="" th:src="@{'/img/'+${newsDetails.imageUrl}}" alt="Profile Image"/>
+                        </div>
+                        <h3 class="mt-3"><a style="text-decoration: none;" th:href="@{${newsDetails.weblink}}" th:target="_blank"><span class=" d-block text-uppercase fw-bold" th:text="${newsDetails.rubrik}"></span></a> </h3>
+
+                       
+                          
+                            <div>
+                                
+                                <p><span class="d-block" th:text="${newsDetails.category}"></span>
+
+                            
+                              
+                                <span class="d-block" th:text="${newsDetails.datepicker}"></span>
+                                
+                                  <span class="d-block" th:text="${newsDetails.krets}"></span></p>
+
+
+                            </div>
+                            
+                            
+                            
+
+
+
+                        <div class="description mt-3">
+
+
+                            <th:block th:utext="${newsDetails.descr}"></th:block>
+                        </div>
+
+                       
+                    </div>
+                </div>
+                <h1 class="text-center p-3 bg-danger text-white" th:unless="${newsDetails}">You don't have permission to see this contact!</h1>
+            </div>
+             </div>
+        </section>
+
+    </body>
+</html>

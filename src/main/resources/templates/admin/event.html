@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{admin/base::layout(~{::section})}">
+
+<head>
+	<meta charset="UTF-8">
+	<title th:text="${title}">Event Admin</title>
+</head>
+
+<body>
+	<section>
+
+		<div class="card me-4">
+			<div class="card-body">
+				<h1 class="text-center"> Lägg Event</h1>
+
+				<div class="container-fluid mt-1">
+
+					<div class="row">
+
+						<div class="col-md-10 offset-md-1">
+
+							<form action="#" th:object="${event}"
+								th:action="@{/admin/process-event}" method="post" class="mt-2">
+
+								<!--rubrik-->
+
+								<div class="input-group">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text">
+
+											<i class="fa fa-plus"></i>
+
+
+										</div>
+									</div>
+									<input required type="text" id="rubrik" name="rubrik" placeholder="Ange event rubrik här!"
+										class="form-control">
+
+
+								</div>
+									<!--web-länk-->
+
+								<div class="input-group mt-3">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text">
+
+											<i class="fa fa-link"></i>
+
+
+										</div>
+									</div>
+									<input required type="text" id="weblink" name="weblink" placeholder="Ange event länk här!"
+										class="form-control">
+
+
+								</div>
+
+								<!--Event Kategori-->
+
+								<div class="input-group mt-3">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text">
+
+											<i class="fa fa-user"></i>
+
+
+										</div>
+									</div>
+									<input required type="text" id="category" name="category"
+										placeholder="Ange event kategori här!" class="form-control">
+
+
+								</div>
+
+								<!--datum och tid-->
+
+								<div class="input-group mt-3">
+
+									<div class="input-group-prepend">
+										<div class="input-group-text"><i class="fa fa-calendar"></i></div></div>
+										<input type="datetime-local" th:field="*{datepicker}" id="datepicker" class="form-control" name="datepicker"
+											placeholder="Välj event datum och tid!" />
+
+									
+
+
+
+								</div>
+
+								
+
+								<!--krets-->
+
+								<div class="input-group mt-3">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text">
+
+											<i class="fa fa-briefcase" style="height:20px"></i>
+
+										</div>
+									</div>
+
+
+									<select class="form-select custom-select" aria-label="Default select example"
+										name="krets" id="krets" th:value="${event.krets}"
+										style="height:42px; background-color: white;" required>
+
+
+										<option selected value="">Välj Krets</option>
+								        <option value="jagareforbundet">Jägareförbundet</option>
+										<option value="stockholm-centrala">Stockholm-Centrala</option>
+										<option value="hallstavik">Hallstavik</option>
+										<option value="haninge-tyreso">Haninge-Tyresö</option>
+										<option value="lidingo">Lidingö</option>
+										<option value="malaro">Mälarö</option>
+										<option value="norrort">Norrort</option>
+										<option value="norrtalje-norra">Norrtälje Norra</option>
+										<option value="norrtalje-sodra">Norrtälje Södra</option>
+										<option value="nynashamn">Nynäshamn</option>
+										<option value="rimbo">Rimbo</option>
+										<option value="solna-sundbyberg">Solna-Sundbyberg</option>
+										<option value="soderort">Söderort</option>
+										<option value="Sodertalje">Södertälje</option>
+										<option value="upplands-bro">Upplands-Bro</option>
+										<option value="wermdo-nacka">Wermdö-Nacka</option>
+										<option value="vasby-sollentuna-jarfalla">Väsby-Sollentuna-Järfälla</option>
+										<option value="vasterort">Västerort</option>
+										<option value="osteraker-vaxholm">Österåker-Vaxholm</option>
+									</select>
+
+
+
+								</div>
+
+
+							    	<!--plats-->
+
+								<div class="input-group mt-3">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text">
+
+										<i class="bi bi-geo-alt-fill"></i>
+
+
+										</div>
+									</div>
+									<input required type="text" id="plats" name="plats" placeholder="Ange plats för evenemanget här!"
+										class="form-control">
+
+
+								</div>
+                                  <br/>
+								<div class="container text-center">
+
+									<button type=submit class="btn btn-info">Spara Event</button>
+
+								</div>
+
+
+
+							</form>
+
+
+						</div>
+
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		
+		
+
+		<script>
+			$(document).ready(() => {
+
+				$(".item").removeClass("active");
+				$("#add-event").addClass("active");
+			});
+
+
+
+
+		</script>
+	</section>
+
+</body>
+
+</html>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org" th:replace="~{user/base::layout(~{::section})}">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>User</title>
+
+</head>
+
+<body>
+	<section>
+
+
+		<!-- FILTER -->
+
+		<div class="row mt-3 mb-4 button-group filter-button-group d-md-flex" id="filters">
+			<div class="col d-flex justify-content-center">
+				<button type="button" data-filter="*" class="btn btn-primary mx-1 text-dark">Alla</button>
+				<button type="button" data-filter=".varg" class="btn btn-primary mx-1 text-dark">Varg</button>
+				<button type="button" data-filter=".afrikansk-svinpest" class="btn btn-primary mx-1 text-dark">Afrikansk
+					svinpest</button>
+				<button type="button" data-filter=".landet-runt" class="btn btn-primary mx-1 text-dark">Landet Runt
+					Norr</button>
+				<button type="button" data-filter=".opinion" class="btn btn-primary mx-1 text-dark">Opinion</button>
+				<button type="button" data-filter=".nyheter" class="btn btn-primary mx-1 text-dark">Nyheter</button>
+				<button type="button" data-filter=".jakthund" class="btn btn-primary mx-1 text-dark">Jakthund</button>
+				<button type="button" data-filter=".eftersök" class="btn btn-primary mx-1 text-dark">Eftersök</button>
+				<button type="button" data-filter=".landet-runt" class="btn btn-primary mx-1 text-dark">Hela landet runt
+					- Aktuellt</button>
+				<button type="button" data-filter=".landet-runt" class="btn btn-primary mx-1 text-dark">Landet runt -
+					Mitt</button>
+				<button type="button" data-filter=".förändring-av-viltvårdsfonden"
+					class="btn btn-primary mx-1 text-dark">Förändring av Viltvårdsfonden</button>
+				<button type="button" data-filter=".bly" class="btn btn-primary mx-1 text-dark">Bly</button>
+				<button type="button" data-filter=".skytte" class="btn btn-primary mx-1 text-dark">Skytte</button>
+				<button type="button" data-filter=".press" class="btn btn-primary mx-1 text-dark">Press</button>
+				<button type="button" data-filter=".landet-runt" class="btn btn-primary mx-1 text-dark">Landet runt -
+					Syd</button>
+				<button type="button" data-filter=".ungdom" class="btn btn-primary mx-1 text-dark">Ungdom</button>
+				<button type="button" data-filter=".fältvilt" class="btn btn-primary mx-1 text-dark">Fältvilt</button>
+				<button type="button" data-filter=".jaktmässor"
+					class="btn btn-primary mx-1 text-dark">Jaktmässor</button>
+				<button type="button" data-filter=".utbildning"
+					class="btn btn-primary mx-1 text-dark">Utbildning</button>
+				<button type="button" data-filter=".viltmat" class="btn btn-primary mx-1 text-dark">Viltmat</button>
+				<button type="button" data-filter=".viltforskning"
+					class="btn btn-primary mx-1 text-dark">Viltforskning</button>
+				<button type="button" data-filter=".jakt" class="btn btn-primary mx-1 text-dark">Jakt</button>
+				<button type="button" data-filter=".vilt" class="btn btn-primary mx-1 text-dark">Vilt</button>
+				<button type="button" data-filter=".medlem" class="btn btn-primary mx-1 text-dark">Medlem</button>
+				<button type="button" data-filter=".fjälljakten"
+					class="btn btn-primary mx-1 text-dark">Fjälljakten</button>
+
+			</div>
+		</div>
+
+
+
+
+
+		<!--<div class="grid-scroll-wrapper">-->
+
+		<div class="grid-user-container">
+
+
+			<!--<div class="message"><iframe th:src="${'https://krets.jagareforbundet.se/norrtaljesodra/'}" width="100%"
+					height="100%"></<ifram></ifram>e></div>-->
+			<div class="message" th:if="${not isEmptyMeddelandeList}">
+				<div class="card" th:each=" message : ${meddelande}">
+					<div class="card-body">
+						<div th:if="${message.imageUrl != 'blank.png'}">
+							<div class="text-center">
+								<img class="images image-fluid" th:src="@{'/img/' + ${message.imageUrl}}"
+									th:alt="'Profile Image'" />
+
+
+								<h1> <a th:href="@{${message.weblink}}" th:target="_blank">
+										<span style="font-size: 30px; color:red" th:text="${message.rubrik}"></span></a>
+								</h1>
+							</div>
+
+							<p style="padding-left:10px ; color:black"> Meddelande från <span class="category-message"
+									th:text="${#strings.toUpperCase(message.krets)}"></span> den&nbsp;
+								<span th:text="${message.datepicker}"></span>
+							</p>
+							<p style="padding-left:5px ; font-weight: bold;">
+								<span th:text="${message.message}"></span>
+							</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+
+			<div class="main">
+
+
+				<div class="d-flex d-md-none justify-content-center mt-3 mx-2">
+					<label for="filterSelect" class="visually-hidden">Filtrera Nyheter:</label>
+					<select id="filterSelect" class="form-select">
+						<option value="*" selected>Filtrera Nyheter</option>
+						<option value="*">Alla</option>
+						<option value=".varg">Varg</option>
+						<option value=".afrikansk-svinpest">Afrikansk
+							svinpest</option>
+						<option value=".landet-runt">Landet Runt
+							Norr</option>
+						<option value=".opinion">Opinion</option>
+						<option value=".nyheter">Nyheter</option>
+						<option value=".jakthund">Jakthund</option>
+						<option value=".eftersök">Eftersök</option>
+						<option value=".landet-runt">Hela landet runt
+							- Aktuellt</option>
+						<option value=".landet-runt">Landet runt -
+							Mitt</option>
+						<option value=".förändring-av-viltvårdsfonden">Förändring av
+							Viltvårdsfonden</option>
+						<option value=".bly">Bly</option>
+						<option value=".skytte">Skytte</option>
+						<option value=".press">Press</option>
+						<option value=".landet-runt">Landet runt -
+							Syd</option>
+						<option value=".ungdom">Ungdom</option>
+						<option value=".fältvilt">Fältvilt</option>
+						<option value=".jaktmässor">Jaktmässor</option>
+						<option value=".utbildning">Utbildning</option>
+						<option value=".viltmat">Viltmat</option>
+						<option value=".viltforskning">Viltforskning</option>
+						<option value=".jakt">Jakt</option>
+						<option value=".vilt">Vilt</option>
+						<option value=".medlem">Medlem</option>
+						<option value=".fjälljakten">Fjälljakten</option>
+						Add other filter options as needed
+					</select>
+				</div>
+				<div class="search-news my-3 ms-auto" style="padding-right: 6%;">
+
+					<input type="text" id="search" class="form-control" placeholder="Sök Nyhet" onkeyup="userSearch()">
+
+					<div class="search-result">
+
+					</div>
+				</div>
+				<div id="news-lists" class="pt-3">
+
+
+
+					<div class="news-flex " id="news-card-flexs"
+						th:class="${#strings.replace(#strings.toLowerCase(newsItem.category), ' ', '-')}"
+						th:each="newsItem,it : ${news}">
+
+
+
+						<div class="card-news-details">
+							<div th:if="${newsItem.imageUrl != 'blank.png'}">
+								<img class="profile-images" th:src="@{'/img/' + ${newsItem.imageUrl}}"
+									th:alt="'Profile Image'" />
+
+
+
+								<form id="'ratingForm-' + ${newsItem.nId}" th:object="${rating}"
+									th:action="@{/user/home/0}" method="post" th:data-news-id="${newsItem.nId}"
+									th:data-user-ratings="${userRatings}" class="mb-0 pb-0">
+									<!-- Include a hidden input field for 'newsId' -->
+									<input type="hidden" name="newsId" th:value="${newsItem.nId}" />
+
+
+
+									<input th:id="'input-1-' + ${newsItem.nId}" name="stars" class="rating-loading"
+										th:value="${newsItem.ratings != null and newsItem.ratings.size() > 0 ? newsItem.ratings[newsItem.ratings.size() - 1].stars : 0}">
+
+
+
+
+
+
+									<script th:inline="javascript">
+										$(document).ready(function () {
+											// Initialize the star rating for each form without the 'initialized' class
+											$('form:not(.initialized) .rating-loading').each(function () {
+												var $form = $(this).closest('form');
+												var $input = $form.find('.rating-loading');
+												var newsItemId = $form.data('news-id');
+
+												// Check if form is initialized
+												if (typeof newsItemId !== 'undefined' && !$form.data('initialized')) {
+													$form.data('initialized', true);
+
+													// Retrieve stored rating from local storage
+													var storedRating = localStorage.getItem('rating-' + newsItemId) || 0;
+
+
+
+													// Initialize the rating plugin for the input
+													$input.rating({
+														step: 1,
+														min: 0,
+														max: 5,
+														clearCaption: 'Saknar omdöme',
+														initialRating: storedRating,
+														starCaptions: {
+															1: 'Dålig',
+															2: 'Medel',
+															3: 'Intressant',
+															4: 'Mycket bra',
+															5: 'Utmärkt'
+														},
+														starTitles: {
+															1: '1 Stjärna',
+															2: '2 Stjärnor',
+															3: '3 Stjärnor',
+															4: '4 Stjärnor',
+															5: '5 Stjärnor'
+														}
+													});
+
+													// Add a click event listener to the star rating input
+													$input.on('rating:change', function (event, value, caption) {
+
+														localStorage.setItem('rating-' + newsItemId, value);
+
+														$form.submit();
+
+													});
+
+												}
+											});
+										});
+									</script>
+
+
+
+
+								</form>
+
+
+							</div>
+							<h1 style="margin-bottom: 5px;margin-top:0px;padding-top:0px;"> <a
+									th:href="@{${newsItem.weblink}}" th:target="_blank">
+									<span th:text="${newsItem.rubrik}"></span></a></h1>
+
+							<p style="margin-left: 10px; margin-bottom: 5px;"><span class="category"
+									th:text="${newsItem.category}"></span>
+								<span th:text="${newsItem.datepicker}"></span>
+							</p>
+							<p style="margin-left: 10px; margin-bottom: 5px;">
+								<span th:text="${newsItem.descr}"></span>
+							</p>
+						</div>
+
+
+
+
+
+
+					</div>
+
+
+
+				</div>
+
+
+				<nav aria-label="Page navigation">
+
+					<ul class="pagination pagination-lg justify-content-center">
+						<li th:if="${currentPage != 0}" class="page-item ">
+							<a th:href="@{'/user/home/' + ${currentPage-1}}" class="page-link" href="#"
+								aria-label="Previous">
+								<span aria-hidden="true">&laquo;</span>
+								<span class="sr-only">Previous</span>
+							</a>
+						</li>
+						<li th:classappend="${currentPage == i-1 ? 'active' : ''}"
+							th:each="i : ${#numbers.sequence(1,totalPages)}" class="page-item"><a
+								th:href="@{'/user/home/' + ${i-1}}" class="page-link" href="#">
+								<span th:text="${i}"></span></a></li>
+
+						<li th:if="${currentPage + 1 != totalPages}" class="page-item">
+							<a th:href="@{'/user/home/' + ${currentPage+1}}" class="page-link" href="#"
+								aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+								<span class="sr-only">Next</span>
+							</a>
+						</li>
+					</ul>
+
+
+				</nav>
+
+
+			</div>
+
+
+
+
+
+			<div class="cleft">
+				<div class="row mt-3 mb-4 button-group filter-button-group d-md-flex" id="event-filters">
+					<div class="col d-flex justify-content-start" style="border:1px solid lightgrey">
+						<button type="button" data-filter="*" class="btn btn-primary mx-1 text-dark">ALLA
+							EVENT</button>
+						<button type="button" data-filter=".hundevent"
+							class="btn btn-primary mx-1 text-dark">HUND</button>
+						<button type="button" data-filter=".jaktevent"
+							class="btn btn-primary mx-1 text-dark">JAKT</button>
+						<button type="button" data-filter=".jaqtevent"
+							class="btn btn-primary mx-1 text-dark">JAQT</button>
+						<button type="button" data-filter=".kurserevent"
+							class="btn btn-primary mx-1 text-dark">KURSER</button>
+						<button type="button" data-filter=".skytteevent"
+							class="btn btn-primary mx-1 text-dark">SKYTTE</button>
+						<button type="button" data-filter=".ungajagareevent"
+							class="btn btn-primary mx-1 text-dark">UNGAJÄGARE</button>
+						<button type="button" data-filter=".ungdomevent"
+							class="btn btn-primary mx-1 text-dark">UNGDOM</button>
+					</div>
+				</div>
+				<div class="d-flex d-md-none justify-content-center mt-3 mx-2">
+					<label for="eventFilterSelect" class="visually-hidden">Filtrera Aktivitet:</label>
+					<select id="eventFilterSelect" class="form-select">
+						<option value="*" selected>Välja Aktivitet</option>
+						<option value="*">ALLA EVENT</option>
+						<option value=".hundevent">HUND</option>
+						<option value=".jaktevent">JAKT</option>
+						<option value=".jaqtevent">JAQT</option>
+						<option value=".kurserevent">KURSER</option>
+						<option value=".skytteevent">SKYTTE</option>
+						<option value=".ungjagareevent">UNGAJÄGARE</option>
+						<option value=".ungdomevent">UNGDOM</option>
+					</select>
+				</div>
+				<div id="event-list" class="fp-aktiviteter ebm-upcoming-events ebm-upcoming-events-improved my-3 ms-4">
+					<h1 class="tck-module-title">Aktiviteter</h1>&nbsp;
+
+					<div th:class="${#strings.replace(#strings.toLowerCase(event.category), ' ', '-')}+event"
+						th:each="event,itr : ${events}">
+						<div class="row event-row">
+							<div class="col-md-1 col-1 mb-3 mb-md-0" style="text-align: right;">
+								<div id="event-date">
+									<div class="ebm-event-date">
+										<div class="ebm-event-month" th:text="${month[itr.index]}"></div>
+										<div class="ebm-event-day" th:text="${day[itr.index]}"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-11 col-11" style="text-align: left;">
+								<div id="event-place">
+									<a class="url ebm-event-link" th:href="@{${event.weblink}}" th:target="_blank">
+										<span th:text="${event.rubrik}"></span>
+									</a>
+									<div class="ebm-event-place" th:text="${time[itr.index]} + ', ' + ${event.plats}">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<a href="https://jagareforbundet.se/mitt/stockholms-lan/jagareforbundet-stockholm/Kalender/"
+					class="bottomLink mt-5 ms-5"><strong>Se alla aktiviteter</strong></a>
+			</div>
+			<div class="cright">
+
+				<iframe id="frame" th:src="${'https://www.xn--jaktgrd-ixa.se/'}" width="100%" height="100%"></iframe>
+
+			</div>
+			<div class="footer">
+				<div id="wrapper-footer" class="text-banner">
+					<h1 class="marquee" style="font-size: 45px; font-weight: bold; color:white">Lägg till banner här
+					</h1>
+					<!--	<div class="inner  tck-container">
+
+						<section id="row-footer" class="tck-modules">
+							<div class="inner n4">
+								<div id="footer-left" class="flexiblemodule ">
+									<div class="inner " data-position="footer-left">
+										<div class="footer-left  tck-module">
+											<div class="tck-module-text">
+
+												<div id="mod-custom132" class="mod-custom custom">
+													START: Articles Anywhere
+													<h3>J&auml;garef&ouml;rbundet Stockholm</h3>
+
+													<p><a href="/personuppgiftspolicy">Personuppgiftspolicy</a></p>
+													END: Articles Anywhere
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div id="footer-center-left" class="flexiblemodule ">
+									<div class="inner " data-position="footer-center-left">
+										<div class="footer-center-left  tck-module">
+											<div class="tck-module-text">
+
+												<div id="mod-custom131" class="mod-custom custom">
+													START: Articles Anywhere
+													<h3>Kontaktuppgifter</h3>
+													<p>Kontakta J&auml;garef&ouml;rbundet Stockholm</p>
+													<p>Styrelsen<br><a href="/styrelsen">Se alla kontaktuppgifter
+															till
+															styrelsen &gt;&gt;</a></p>
+													<p>Kansliet<br>Bes&ouml;ksadress: Lingen&auml;sv&auml;gen
+														21<br>Postadress: 29135 Stockholm<br>Tel: 077-1830 300</p>
+													<p style="margin:0px; padding:0px"><a href="/kansliet">Kansliet</a>
+													</p>
+													<p><a href="/styrelsen/valberedning">Valberedning</a></p>
+													END: Articles Anywhere
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div id="footer-center-right" class="flexiblemodule ">
+									<div class="inner " data-position="footer-center-right">
+										<div class="footer-center-right  tck-module">
+											<div class="tck-module-text">
+
+												<div id="mod-custom130" class="mod-custom custom">
+													START: Articles Anywhere
+													<h3>Medlemmar</h3>
+													<p><a href="https://jagareforbundet.se/medlem/medlemsservice/"
+															target="_blank" rel="noopener">Medlemsservice</a></p>
+													<p><a href="/jaktvardskretsar">Hitta din
+															jaktv&aring;rdskrets</a>
+													</p>
+													<p>Har du n&aring;got som du vill bidra med?&nbsp;<br><a
+															href="/nyheter/alla-nyheter/#bidra">Skicka g&auml;rna
+															ditt
+															tips
+															till oss &gt;&gt;</a></p>
+													<p>Du kan bidra med till exempel</p>
+													<ul>
+														<li>H&auml;ndelser inom l&auml;net</li>
+														<li>Nyheter som inte har uppm&auml;rksammats</li>
+													</ul>
+													<p>Du kan inte bidra med till eempel</p>
+													<ul>
+														<li>Produkter</li>
+														<li>Reklam</li>
+													</ul>
+													<p>Vill du g&ouml;ra reklam p&aring; hemsidan, v&auml;nligen
+														kontakta <a href="/styrelsen#LarsPersson">Lars Persson</a>
+													</p>
+													END: Articles Anywhere
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div id="footer-right" class="flexiblemodule ">
+									<div class="inner " data-position="footer-right">
+										<div class="footer-right  tck-module">
+											<div class="tck-module-text">
+
+												<div id="mod-custom129" class="mod-custom custom">
+													START: Articles Anywhere
+													<h3>Inloggning J&auml;garef&ouml;rbundet</h3>
+													<div class="wf-columns wf-columns-stack-medium wf-columns-layout-auto"
+														data-wf-columns="1">
+														<div class="wf-columns">
+
+															<a href="https://medlem.jagareforbundet.se/blimedlem"
+																target="_blank" rel="noopener"> <button
+																	class="jfs-or-button">Bli medlem</button> </a>
+
+
+
+															<a href="https://login.jagareforbundet.se/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3DMedlem%26redirect_uri%3Dhttps%253A%252F%252Fmedlem.jagareforbundet.se%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520email%2520roles%26code_challenge%3DiDTSJA41AWIjcD6aWz3cIO1i_JCAYq_5AFl3k4bl1mY%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D637966012910137038.MmQ4ZGUzZTItMDQ3NC00MTYyLTlhZTYtYTg4ZmRmODAwY2UxOGEzZTY4ZDAtMjg2Yi00YWUzLTk2NDQtOWY2NTkxMzgyZjdm%26state%3DCfDJ8ATylmaxewlBvq9dnZEFLBJN2_j_-Dd5WZTS1JF9EkZssiAiWle31YTQtFSGzH5UUB1_jtu-7zd8sNeGulSdzxzenEje9EozqXy99VAznPZLsP4prpE20Nu9AIpd3JYVYhBrz0DK_yH2-o0ovqfTwX9uaNGcb8rLKl8h2CTvLxKvcTKgD45EZCUTY7dw2FA_InDy8EP3XvvqadE5yY_XGQUr-w_g-9amqXQM61EP0etrqkox0AedNbzEooFFhwMqvdgI60XkW9pgZ_pPeig74znxuJIWDMiH870CjaT9QWvpvdyWeFqXtjPVyr4rlLbup_v5cpzrfDR9yQmfeDyAT88iBHFwIV5VajMApctjLidnCKMjBL-p25MgWnMAotzsUA%26x-client-SKU%3DID_NETSTANDARD2_0%26x-client-ver%3D5.5.0.0"
+																target="_blank" rel="noopener"> <button
+																	class="jfs-wh-button">Logga in</button> </a>
+
+														</div>
+													</div>
+													<p>&nbsp;</p>
+													<p>F&ouml;r att kunna logga in p&aring; mina sidor p&aring;
+														J&auml;garef&ouml;rbundet beh&ouml;ver din medlemsavgift
+														vara
+														betald
+														och du m&aring;ste registrera dig f&ouml;r inloggning.&nbsp;
+													</p>
+													<p style="margin:0px"><a href="https://jagareforbundet.se/"
+															target="_blank" rel="noopener">Bes&ouml;k Svenska
+															J&auml;garef&ouml;rbundet</a></p>
+													<p style="text-align: center;"><a href="/jfs-admin"><img
+																src="../img/jf-logo-sym-wh.png"
+																alt="jfskane logo sym wh" width="40" height="46"
+																style="margin: 10px;"></a></p>
+													END: Articles Anywhere </p>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+
+
+						</section>
+
+
+					</div>-->
+				</div>
+			</div>
+		</div>
+		<!--	<script>
+    $(document).ready(function() {
+        // Load Verksamhet content on page load
+        loadContent('https://jagareforbundet.se/mitt/stockholms-lan/jagareforbundet-stockholm/verksamhet/');
+
+        // Handle clicks on dropdown items
+        $('.dropdown-item').on('click', function(e) {
+            e.preventDefault();
+            var link = $(this).attr('href');
+            loadContent(link);
+        });
+    });
+
+    function loadContent(link) {
+        // Use AJAX to load content from the specified link
+        $.ajax({
+            url: link,
+            type: 'GET',
+            success: function(data) {
+                // Update the cright container with the loaded content
+                $('.cright').html(data);
+            },
+            error: function() {
+                console.error('Error loading content.');
+            }
+        });
+    }
+</script>-->
+		<!--		<script>
+			var formSubmitted = false;
+
+			document.getElementById("kretsForm").addEventListener("submit", function (event) {
+				if (formSubmitted) {
+					event.preventDefault(); // Prevent the form from being submitted again
+				} else {
+					formSubmitted = true;
+					document.getElementById("submitButton").disabled = true; // Disable the submit button
+				}
+			});
+		</script>-->
+
+
+		<script>
+			$(document).ready(function () {
+
+				/* SHOW MEGADROPDOWNS */
+				function showMegaDD() {
+					$(this).children(".megaDDLink").addClass("megaDDHover");
+					$(this).children("div.megaDD").fadeIn(150);
+				}
+
+				function hideMegaDD() {
+					$(this).children(".megaDDLink").removeClass("megaDDHover");
+					$(this).children("div.megaDD").fadeOut(250);
+				}
+
+				var megaDD = {
+					interval: 110,
+					sensitivity: 4,
+					over: showMegaDD,
+					timeout: 100,
+					out: hideMegaDD
+				};
+
+				$("div.megaDD").hide();
+				//	$("li.megaDDLi").hoverIntent(megaDD);
+
+			});
+
+		</script>
+
+	</section>
+
+</body>
+
+</html>

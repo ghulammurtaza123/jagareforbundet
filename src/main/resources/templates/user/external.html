@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org" th:replace="~{user/base::layout(~{::section})}">
+<head>
+    <title>Show External Content</title>
+</head>
+<body>
+	<section>
+    <iframe th:if="${not #strings.isEmpty(externalContent)}" th:utext="${externalContent}"></iframe>
+    <div th:if="${not #strings.isEmpty(error)}" th:text="${error}"></div>
+    </section>
+</body>
+</html>

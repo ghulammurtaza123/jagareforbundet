@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{admin/base::layout(~{::section})}">
+
+<head>
+	<meta charset="UTF-8">
+	<title th:text="${title}">Nyhet Admin</title>
+</head>
+
+<body>
+	<section>
+
+		<div class="card me-4">
+			<div class="card-body">
+				<h1 class="text-center"> Lägg Nyhet</h1>
+
+				<div class="container-fluid mt-1">
+
+					<div class="row">
+
+						<div class="col-md-10 offset-md-1">
+
+							<form action="#" th:object="${news}" enctype="multipart/form-data"
+								th:action="@{/admin/process-nyhet}" method="post" class="mt-2">
+
+								<!--rubrik-->
+
+								<div class="input-group">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text">
+
+											<i class="fa fa-plus"></i>
+
+
+										</div>
+									</div>
+									<input required type="text" id="rubrik" name="rubrik" placeholder="Ange rubrik här!"
+										class="form-control">
+
+
+								</div>
+									<!--web-länk-->
+
+								<div class="input-group mt-3">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text">
+
+											<i class="fa fa-link"></i>
+
+
+										</div>
+									</div>
+									<input required type="text" id="weblink" name="weblink" placeholder="Ange nyhet länk här!"
+										class="form-control">
+
+
+								</div>
+
+								<!--Nyhet Kategori-->
+
+								<div class="input-group mt-3">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text">
+
+											<i class="fa fa-user"></i>
+
+
+										</div>
+									</div>
+									<input required type="text" id="category" name="category"
+										placeholder="Ange kategori här!" class="form-control">
+
+
+								</div>
+
+								<!--datum-->
+
+								<div class="input-group mt-3">
+
+									<div class="input-group date">
+										<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+										<input type="text" id="datepicker" class="form-control" name="datepicker"
+											placeholder="Välj nyhet datum!" />
+
+									</div>
+
+
+
+								</div>
+
+								
+
+								<!--krets-->
+
+								<div class="input-group mt-3">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text">
+
+											<i class="fa fa-briefcase" style="height:20px"></i>
+
+										</div>
+									</div>
+
+
+									<select class="form-select custom-select" aria-label="Default select example"
+										name="krets" id="krets" th:value="${news.krets}"
+										style="height:42px; background-color: white;" required>
+
+
+										<option selected value="">Välj Krets</option>
+								        <option value="jagareforbundet">Jägareförbundet</option>
+										<option value="stockholm-centrala">Stockholm-Centrala</option>
+										<option value="hallstavik">Hallstavik</option>
+										<option value="haninge-tyreso">Haninge-Tyresö</option>
+										<option value="lidingo">Lidingö</option>
+										<option value="malaro">Mälarö</option>
+										<option value="norrort">Norrort</option>
+										<option value="norrtalje-norra">Norrtälje Norra</option>
+										<option value="norrtalje-sodra">Norrtälje Södra</option>
+										<option value="nynashamn">Nynäshamn</option>
+										<option value="rimbo">Rimbo</option>
+										<option value="solna-sundbyberg">Solna-Sundbyberg</option>
+										<option value="soderort">Söderort</option>
+										<option value="Sodertalje">Södertälje</option>
+										<option value="upplands-bro">Upplands-Bro</option>
+										<option value="wermdo-nacka">Wermdö-Nacka</option>
+										<option value="vasby-sollentuna-jarfalla">Väsby-Sollentuna-Järfälla</option>
+										<option value="vasterort">Västerort</option>
+										<option value="osteraker-vaxholm">Österåker-Vaxholm</option>
+									</select>
+
+
+
+								</div>
+
+
+
+								<!--nyhet-->
+
+
+								<div class="form-group mt-3">
+									<textarea name="descr" id="descr" rows="4" class="form-control"
+										placeholder="Ange nyhet här!"></textarea>
+
+								</div>
+
+								<!--contact image-->
+
+
+								<div class="custom-file">
+                                   
+									<input type="file" name="profileImage" id="profileImage">
+								</div>
+
+								<div class="container text-center">
+
+									<button type=submit class="btn btn-info">Spara Nyhet</button>
+
+								</div>
+
+
+
+							</form>
+
+
+						</div>
+
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		
+		
+
+		<script>
+			$(document).ready(() => {
+
+				$(".item").removeClass("active");
+				$("#add-news").addClass("active");
+			});
+
+
+
+
+		</script>
+	</section>
+
+</body>
+
+</html>
