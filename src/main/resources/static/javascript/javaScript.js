@@ -28,6 +28,17 @@ const toggleSideBar = () => {
 }
 
 
+const getBaseUrl = () => {
+	// Check if the hostname is localhost
+	if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+		// Use the localhost URL
+		return "http://localhost:8080";
+	} else {
+		// Use the production URL
+		return "https://jagareforbundet-production.up.railway.app";
+	}
+};
+
 
 
 
@@ -39,8 +50,10 @@ const search = () => {
 		$(".search-result").hide();
 	} else {
 
+		let baseUrl = getBaseUrl();
+		let url = `${baseUrl}/search/${query}`;
 
-		let url = `http://localhost:8080/search/${query}`;
+
 		fetch(url)
 			.then((response) => {
 				return response.json();
@@ -51,7 +64,7 @@ const search = () => {
 
 				data.forEach((news) => {
 
-					text += `<a href='/admin/${news.nId}/news' class='list-group-item list-group-item-action'>${news.rubrik} </a>`;
+					text += `<a href='${baseUrl}/admin/${news.nId}/news' class='list-group-item list-group-item-action'>${news.rubrik} </a>`;
 				});
 				text += `</div>`;
 				$(".search-result").html(text);
@@ -70,7 +83,8 @@ const userSearch = () => {
 	} else {
 		/*console.log(query1);*/
 
-		let url = `http://localhost:8080/searches/${query1}`;
+		let baseUrl = getBaseUrl();
+        let url = `${baseUrl}/searches/${query1}`;
 		fetch(url)
 			.then((response) => {
 				return response.json();
@@ -81,7 +95,7 @@ const userSearch = () => {
 
 				data.forEach((news) => {
 
-					text += `<a href='/user/${news.nId}/news' class='list-group-item list-group-item-action'>${news.rubrik} </a>`;
+					text += `<a href='${baseUrl}/user/${news.nId}/news' class='list-group-item list-group-item-action'>${news.rubrik} </a>`;
 				});
 				text += `</div>`;
 				$(".search-result").html(text);
@@ -100,8 +114,9 @@ const searchEvent = () => {
 		$(".search-result").hide();
 	} else {
 
+        let baseUrl = getBaseUrl();
 
-		let url = `http://localhost:8080/search/event/${query}`;
+		let url = `${baseUrl}/search/event/${query}`;
 		fetch(url)
 			.then((response) => {
 				return response.json();
@@ -112,7 +127,7 @@ const searchEvent = () => {
 
 				data.forEach((event) => {
 
-					text += `<a href='/admin/${event.eId}/event' class='list-group-item list-group-item-action'>${event.rubrik} </a>`;
+					text += `<a href='${baseUrl}/admin/${event.eId}/event' class='list-group-item list-group-item-action'>${event.rubrik} </a>`;
 				});
 				text += `</div>`;
 				$(".search-result").html(text);
@@ -130,8 +145,8 @@ const userSearchEvent = () => {
 		$(".search-result").hide();
 	} else {
 		/*console.log(query1);*/
-
-		let url = `http://localhost:8080/searches/event/${query1}`;
+        let baseUrl = getBaseUrl();
+		let url = `${baseUrl}/searches/event/${query1}`;
 		fetch(url)
 			.then((response) => {
 				return response.json();
@@ -142,7 +157,7 @@ const userSearchEvent = () => {
 
 				data.forEach((event) => {
 
-					text += `<a href='/user//${event.eId}/event' class='list-group-item list-group-item-action'>${event.rubrik} </a>`;
+					text += `<a href='${baseUrl}/user//${event.eId}/event' class='list-group-item list-group-item-action'>${event.rubrik} </a>`;
 				});
 				text += `</div>`;
 				$(".search-result").html(text);
@@ -152,21 +167,21 @@ const userSearchEvent = () => {
 
 }
 
-			function toggleSelection(checkbox) {
-				var selectedKretsInput = document.getElementById('selectedKrets');
-				var value = checkbox.value;
+function toggleSelection(checkbox) {
+	var selectedKretsInput = document.getElementById('selectedKrets');
+	var value = checkbox.value;
 
-				if (checkbox.checked) {
-					// Add to the list if checked
-					if (!selectedKretsInput.value.includes(value)) {
-						selectedKretsInput.value += value + ',';
-					}
-				} else {
-					// Remove from the list if unchecked
-					selectedKretsInput.value = selectedKretsInput.value.replace(value + ',', '');
-				}
-			}
-		
+	if (checkbox.checked) {
+		// Add to the list if checked
+		if (!selectedKretsInput.value.includes(value)) {
+			selectedKretsInput.value += value + ',';
+		}
+	} else {
+		// Remove from the list if unchecked
+		selectedKretsInput.value = selectedKretsInput.value.replace(value + ',', '');
+	}
+}
+
 
 $(document).ready(function() {
 	// Cache the filters elements for better performance
@@ -214,12 +229,12 @@ $(document).ready(function() {
 
 	// Function for handling event-list filters
 	function handleEventListFilters() {
-  
+
 		eventFilterSelect.change(function() {
-			
+
 			var selectedValues = eventFilterSelect.val();
 			$eventGrid.isotope({ filter: selectedValues });
-		
+
 		});
 
 		$('#event-filters').on('click', 'button', function() {

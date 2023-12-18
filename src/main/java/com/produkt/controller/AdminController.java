@@ -107,7 +107,7 @@ public class AdminController {
 
 		model.addAttribute("title", " ✏  Lägg Nyheter   ");
 		model.addAttribute("news", new News());
-		return "/admin/add_nyheter";
+		return "admin/add_nyheter";
 
 	}
 	
@@ -116,7 +116,7 @@ public class AdminController {
 
 		model.addAttribute("title", " ✏  Lägg Meddelande   ");
 		model.addAttribute("meddelande", new Meddelande());
-		return "/admin/add_message";
+		return "admin/add_message";
 
 	}
 	
@@ -320,7 +320,7 @@ public class AdminController {
 
 		model.addAttribute("title", " ✏  Lägg Evenet");
 		model.addAttribute("event", new Event());
-		return "/admin/event";
+		return "admin/event";
 
 	}
 
