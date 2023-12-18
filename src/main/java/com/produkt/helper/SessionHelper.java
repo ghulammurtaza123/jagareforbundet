@@ -10,30 +10,26 @@ import jakarta.servlet.http.HttpSession;
 @Component
 public class SessionHelper {
 
-	
-	public void removeSessionMessage(){
-		
-		try {
-			
-		
-			ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+    public void removeSessionMessage() {
 
-			if (attributes != null) {
-			    HttpServletRequest request = attributes.getRequest();
-			    HttpSession session = request.getSession(false); // passing false to getSession to avoid creating a new session
+        try {
 
-			    if (session != null) {
-			        session.removeAttribute("message");
-			    }
-			} else {
-			    System.out.println("Request Attributes are null");
-			}
- 
-			   
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
+            ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+
+            if (attributes != null) {
+                HttpServletRequest request = attributes.getRequest();
+                HttpSession session = request.getSession(false); // passing false to getSession to avoid creating a new session
+
+                if (session != null) {
+                    session.removeAttribute("message");
+                }
+            } else {
+                System.out.println("Request Attributes are null");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }
