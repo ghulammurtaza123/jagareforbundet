@@ -228,7 +228,7 @@ body {
 	width: 30%;
 	padding-top: 3%;
 	padding-right: 1%;
-    z-index: 999999999;
+    z-index: 9999999999;
 
 
 
@@ -483,6 +483,17 @@ section a {
 	#navbar-extra {
 		display: none !important;
 	}
+	
+	.navbar{
+	margin-right:0px !important;
+	padding-right:0px !important;
+}
+     .icons{
+		 font-size: 50%!important;
+		 font-weight: bold;
+		 padding: 0px !important;
+		 margin-right:0px !important;
+	 }
 
 	#login {
 		padding-bottom: 0px;
