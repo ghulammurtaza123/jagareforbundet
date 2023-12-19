@@ -6,6 +6,9 @@ body {
 	background-color: white;
 }
 
+.navbar{
+	z-index: 99999999999999;
+}
 /*input[type=checkbox]
 {
    Double-sized Checkboxes 
@@ -221,7 +224,7 @@ body {
 
 .search-news {
 
-	position: relative;
+
 	width: 30%;
 	padding-top: 3%;
 	padding-right: 1%;
@@ -499,8 +502,7 @@ section a {
 
 	.search-news {
 
-		position: relative;
-		width: 100%;
+				width: 100%;
 		padding-left: 3%;
 		z-index: 999999999999;
 		padding-right: 4% !important;

@@ -131,7 +131,7 @@ public class AdminController {
 
 			if (file.isEmpty()) {
 				System.out.println("No image uploaded!");
-				meddelande.setImageUrl("blank.png");
+				meddelande.setImageUrl("default.png");
 			} else {
 				meddelande.setImageUrl(file.getOriginalFilename());
 				File fileObject = new ClassPathResource("static/img").getFile();
