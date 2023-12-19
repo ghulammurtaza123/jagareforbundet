@@ -6,6 +6,7 @@ import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -40,6 +41,7 @@ import com.produkt.model.News;
 import com.produkt.model.Rating;
 import com.produkt.model.User;
 import com.produkt.model.UserKrets;
+import com.produkt.helper.DateComparator;
 
 @Controller
 @RequestMapping("/user")
@@ -142,6 +144,10 @@ public class UserController {
 		            relevantEvent.addAll(eventForKrets);
 		        }
 		    }
+		    
+		    // Sorting news
+	        DateComparator dateComparator = new DateComparator();
+	        Collections.sort(relevantNews, dateComparator::compareNews);
 
 		model.addAttribute("meddelande", lastMeddelande);
 		model.addAttribute("isEmptyMeddelandeList", meddelandeList.isEmpty());
@@ -168,6 +174,16 @@ public class UserController {
 		List<String> monthsList = new ArrayList<>();
 		List<Integer> dayList = new ArrayList<>();
 		List<String> timeList = new ArrayList<>();
+		
+		 // Sorting events
+        DateComparator eventComparator = new DateComparator();
+        Collections.sort(relevantEvent, eventComparator);
+
+      
+
+	     
+	     
+		
 		for (Event event_item : relevantEvent) {
 			String str = event_item.getDatepicker();
 

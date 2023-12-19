@@ -20,7 +20,7 @@ public class Event {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int eId;
-	
+
 	@NotBlank(message = "Fyll i det här fältet !!")
 	private String rubrik;
 	@NotBlank(message = "Fyll i det här fältet !!")
@@ -34,7 +34,7 @@ public class Event {
 	@ManyToOne
 	@JsonIgnore
 	private User user;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "krets_id")
 	private Krets kret;
@@ -102,8 +102,6 @@ public class Event {
 	public void setWeblink(String weblink) {
 		this.weblink = weblink;
 	}
-	
-	
 
 	public Krets getKret() {
 		return kret;
@@ -112,7 +110,5 @@ public class Event {
 	public void setKret(Krets kret) {
 		this.kret = kret;
 	}
-
-
 
 }
