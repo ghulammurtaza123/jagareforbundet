@@ -31,7 +31,7 @@ public class HomeController {
 	@RequestMapping("/")
 	public String home(Model model) {
 		model.addAttribute("title", "Home-Jägareförbundet Stockholm");
-		return "home";
+		return "login";
 	}
 
 	@RequestMapping("/about")
