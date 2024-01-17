@@ -39,6 +39,9 @@ public interface RatingRepository extends JpaRepository<Rating, Integer> {
 
 	@Query("SELECT r.stars FROM Rating r WHERE r.news.nId = :nId AND r.user.id = :userId")
 	List<Integer> findRatingByNewsIdAndUserId(@Param("nId") Integer nId, @Param("userId") Integer userId);
+	
+	@Query("SELECT r.stars FROM Rating r WHERE r.news.nId = :nId")
+	List<Integer> findRatingByNewsId(@Param("nId") Integer nId);
 
 	@Query("SELECT n.id, r FROM News n LEFT JOIN Rating r ON n.id = r.news.id WHERE (n.id, r.id) IN "
 	        + "(SELECT n2.id, MAX(r2.id) FROM News n2 LEFT JOIN Rating r2 ON n2.id = r2.news.id GROUP BY n2.id) "

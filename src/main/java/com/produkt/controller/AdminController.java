@@ -22,7 +22,12 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import com.produkt.helper.Message;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -59,6 +64,8 @@ public class AdminController {
 
 	@Autowired
 	BCryptPasswordEncoder bCryptPass;
+	
+	Map<Integer, Integer> ratingCounts = new HashMap<>();
 
 	@ModelAttribute
 	public void helperForRepeatingCode(Model m, Principal p) {
@@ -210,11 +217,31 @@ public class AdminController {
 
 		Pageable pageable = PageRequest.of(page, 6);
 		Page<News> news = news_repo.findNewsByUser(user.getId(), pageable);
+		 List<Map<Integer, Integer>> ratingDataList = new ArrayList<>();
+
+		    for (News newsItem : news) {
+		        // Create a new map for each news item to store rating counts
+		        Map<Integer, Integer> ratingCounts = new HashMap<>();
+
+		        // Get the list of ratings for the current news item
+		        List<Integer> ratings = rating_repo.findRatingByNewsId(newsItem.getnId());
+
+		        // Update the count in the Map for each rating in the list
+		        for (int rating : ratings) {
+		            ratingCounts.put(rating, ratingCounts.getOrDefault(rating, 0) + 1);
+		        }
+
+		        // Add the rating counts map to the list
+		        ratingDataList.add(ratingCounts);
+		    }
+
 
 		model.addAttribute("news", news);
 
 		model.addAttribute("currentPage", page);
 		model.addAttribute("totalPages", news.getTotalPages());
+		// Add the list of rating data to the model
+	    model.addAttribute("ratingDataList", ratingDataList);
 		return "admin/show_news";
 	}
 

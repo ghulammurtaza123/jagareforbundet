@@ -9,7 +9,7 @@
 <body>
 	<section>
 		<div class="container">
-	<div class="search-news my-3 ms-auto">
+			<div class="search-news my-3 ms-auto">
 
 				<input type="text" id="search" class="form-control" placeholder="Sök Nyhet" onkeyup="search()">
 
@@ -18,39 +18,164 @@
 				</div>
 			</div>
 			<div class="row mt-4 ">
-	
-		<div class="col-md-4 my-2" th:each="newsItem : ${news}">
-			<div id="news" class="card-news" >
 
-				<div class="card-body">
-					<div class="container mt-3" th:if="${newsItem.imageUrl != 'blank.png'}">
-						<img class="profile-images image-fluid  mt-3" th:src="@{'/img/' + ${newsItem.imageUrl}}"
-							th:alt="'Profile Image'" />
+				<div class="col-md-4 my-2" th:each="newsItem , idx : ${news}">
+					<div id="news" class="card-news">
+
+						<div class="card-body">
+							<div class="container mt-3" th:if="${newsItem.imageUrl != 'blank.png'}">
+								<img class="profile-images image-fluid  mt-3" th:src="@{'/img/' + ${newsItem.imageUrl}}"
+									th:alt="'Profile Image'" />
+
+							</div>
+							<!-- Display ratings for the current newsItem -->
+
+
+
+
+							<div class="star-icon" th:if="${ratingDataList != null}">
+								<span th:data-bs-toggle="modal"
+									th:data-bs-target="'#chartjs-horizontal-bar-' +${idx.index}"><i class="bi bi-bar-chart-line-fill" style="color:red;"></i></span>
+
+
+
+
+								<!-- Modal -->
+								<div class="modal fade" th:id="'chartjs-horizontal-bar-' +${idx.index}" tabindex="-1"
+									aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h1 class="modal-title fs-5" id="exampleModalLabel">Nyhet-Omdömen
+												</h1>
+												<button type="button" class="btn-close" data-bs-dismiss="modal"
+													aria-label="Close"></button>
+											</div>
+											<div class="modal-body">
+												<div th:each="ratingData : ${ratingDataList[idx.index]}">
+													
+
+												</div>
+												<canvas th:id="'chartjs-bar-' + ${idx.index}"
+													style="max-width: 100%; max-height: auto; width:350px; height:200px;"></canvas>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--
+rating modal ends-->
+							<script th:inline="javascript">
+								`/*<![CDATA[*/`
+
+								th: each = "newsItem, idx : ${news}"
+
+
+								new Chart(document.getElementById('chartjs-bar-' + `[[${idx.index}]]`), {
+									type: "horizontalBar",
+									data: {
+										labels: ["Utmärkt", "Mycket bra", "Intressant", "Medel", "Dålig"],
+										datasets: [{
+											data: [
+												`[[${ratingDataList[idx.index]?.get(5)}]]`,
+												`[[${ratingDataList[idx.index]?.get(4)}]]`,
+												`[[${ratingDataList[idx.index]?.get(3)}]]`,
+												`[[${ratingDataList[idx.index]?.get(2)}]]`,
+												`[[${ratingDataList[idx.index]?.get(1)}]]`,
+											],
+											backgroundColor: [
+												'rgba(2, 148, 32, 1)',
+												'rgba(0, 0, 255, 1)',
+												'rgba(255, 0, 0, 1)',
+												'rgba(255, 140, 0, 1)',
+												'rgba(0, 128, 128, 1)',
+											],
+											borderColor: [
+												'rgba(2, 148, 32, 1)',
+												'rgba(0, 0, 255, 1)',
+												'rgba(255, 0, 0, 1)',
+												'rgba(255, 140, 0, 1)',
+												'rgba(0, 128, 128, 1)',
+											],
+											borderWidth: 1,
+											borderRadius: 50,
+										}]
+									},
+									options: {
+										maintainAspectRatio: true,
+										cutoutPercentage: 0,
+										scales: {
+											xAxes: [{
+
+												ticks: {
+													beginAtZero: true,
+													stepSize: 10, // Set the step size for the x-axis ticks
+
+												}
+											}],
+											yAxes: [{
+												gridLines: {
+													display: false, // Set display to false to hide grid lines
+												},
+												ticks: {
+													fontSize: 12,
+													fontStyle: 'bold',
+												}
+											}]
+										},
+										legend: {
+											display: false
+										},
+										elements: {
+											rectangle: {
+												borderSkipped: 0,
+												cornerRadius: 10,
+											}
+										},
+										tooltips: {
+											cornerRadius: 10,
+											caretSize: 0,
+											xPadding: 16,
+											yPadding: 10,
+											backgroundColor: 'rgba(255,255,255,0.9)',
+											titleFontColor: '#333',
+											bodyFontColor: '#666',
+											borderColor: '#aaa',
+											borderWidth: 1,
+										}
+									}
+								});
+								`/*]]>*/`
+							</script>
+
+
+
+
+							<h1 style="margin-bottom: 5px"> <a th:href="@{${newsItem.weblink}}" th:target="_blank">
+									<span th:text="${newsItem.rubrik}"></span></a></h1>
+
+							<p style="margin-left: 10px; margin-bottom: 5px"><span class="category"
+									th:text="${newsItem.category}"></span>
+								<span th:text="${newsItem.datepicker}"></span>
+							</p>
+							<div>
+								<p style="margin-left: 10px; margin-bottom: 5px;"><span
+										th:text="${newsItem.descr}"></span></p>
+
+							</div>
+
+
+
+
+
+
+						</div>
+
 					</div>
-
-					<h1 style="margin-bottom: 5px"> <a th:href="@{${newsItem.weblink}}" th:target="_blank">
-							<span th:text="${newsItem.rubrik}"></span></a></h1>
-
-					<p style="margin-left: 10px; margin-bottom: 5px"><span class="category" th:text="${newsItem.category}"></span>
-						<span th:text="${newsItem.datepicker}"></span>
-					</p>
-					<div>
-						<p style="margin-left: 10px; margin-bottom: 5px;"><span th:text="${newsItem.descr}"></span></p>
-
-					</div>
-
-
-
-
-
-
 				</div>
-		
+
 			</div>
-			</div>
-	
-		</div>
-				<!--   Pagination -->
+			<!--   Pagination -->
 
 
 
@@ -80,8 +205,13 @@
 
 
 			</nav>
-		   </div>
-			<script>
+		</div>
+
+
+
+
+
+		<script>
 			$(document).ready(() => {
 
 				$('.item').removeClass('active');
